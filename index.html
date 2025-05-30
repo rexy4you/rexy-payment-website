@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAYMENT REXY STORE</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Orbitron:wght@700&family=Comic+Neue&display=swap');
+
+    body {
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      color: #e0e0e0;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 50px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(102,126,234,0.9);
+    }
+
+    .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    button {
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 0.1em;
+    }
+
+    button:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+
+    .output {
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      margin-top: 30px;
+      text-align: center;
+      color: white;
+      text-shadow: 0 0 5px #fff, 0 0 10px #aaa;
+    }
+
+    #largeQrisContainer {
+      margin-top: 20px;
+      opacity: 0;
+      transition: 0.5s ease;
+      pointer-events: none;
+    }
+
+    #largeQrisContainer.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #largeQrisContainer img {
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #a3b1ff;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-family: 'Comic Neue', cursive;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.3);
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PAYMENT REXY STORE</h1>
+
+  <div class="btn-container">
+    <button id="btnDana">DANA</button>
+    <button id="btnGopay">GOPAY</button>
+    <button id="btnQris">QRIS</button>
+    <button id="btnSS">SS TRANSFER KE</button>
+  </div>
+
+  <div class="output" id="output"></div>
+
+  <div id="largeQrisContainer">
+    <img src="https://files.catbox.moe/slvw4i.png" alt="QRIS Image" />
+  </div>
+
+  <footer id="copyright"></footer>
+
+  <script>
+    const output = document.getElementById('output');
+    const largeQrisContainer = document.getElementById('largeQrisContainer');
+
+    function animateText(text) {
+      largeQrisContainer.classList.remove('active');
+      output.innerHTML = '';
+      const span = document.createElement('span');
+      span.textContent = text;
+      output.appendChild(span);
+    }
+
+    function showLargeQris() {
+      output.innerHTML = '';
+      largeQrisContainer.classList.add('active');
+    }
+
+    document.getElementById('btnDana').onclick = () => {
+      animateText('089676088719');
+    };
+    document.getElementById('btnGopay').onclick = () => {
+      animateText('089604290518');
+    };
+    document.getElementById('btnQris').onclick = () => {
+      showLargeQris();
+    };
+    document.getElementById('btnSS').onclick = () => {
+      window.location.href = "https://wa.me/6289676088719?text=mau+ss+tf+bg";
+    };
+
+    // Decode and insert copyright
+    const encoded = "wqkgQ29weXJpZ2h0IEdoYXpvNHlvdQ=="; // Base64 dari "© Copyright Rexy store"
+    const decoded = atob(encoded);
+    document.getElementById("copyright").textContent = decoded;
+  </script>
+</body>
+</html>
